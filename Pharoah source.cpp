@@ -16,7 +16,7 @@ To Do:
 */
 
 
-
+int postitionarray = [107];
 
     int diceRoll(int position, int role) { //cant use class because it is a key word so am using role instead
         int diceRoll;
