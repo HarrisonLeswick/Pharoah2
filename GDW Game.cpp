@@ -90,7 +90,7 @@ int mummy(int role, int sword, int healthpotion, int health, int maxhealth, int 
 
         if (sword == 1) {
             damage = damage + 3;
-            std::cout << "You slash with your sword leaving a gash across your foes chest dealing" << damage << " damage. \n"; //your damage phase
+            std::cout << "You slash with your sword leaving a gash across your foes chest dealing " << damage << " damage. \n"; //your damage phase
         }
         else if (sword == 0) {
             std::cout << "Using a rock you smash the mummy in the side of his head dealing " << damage << " damage. \n"; //your damage phase
@@ -1027,6 +1027,7 @@ int diceRoll(int role) { //cant use class because it is a key word so am using r
     return rollDice;
 
 }
+
 //Blessing system
 int blessRoll(int role, int bless1, int bless2) {
     int blessRoll;
@@ -1252,7 +1253,7 @@ int main() {
     int RUSure;
     int roleselection = 0;
     //variables for character stats
-    int position = 29;
+    int position = 1;
     int money = 10;
     int damage;
     int health;
@@ -1346,7 +1347,7 @@ int main() {
                 std::cout << "Welcome to Pharoah ";
                 std::cout << endl << "Your goal is to go around the map and collect all of the artifacts in order to become the next Pharoah ";
                 std::cout << endl << "You can collect artifacts by fighting monsters and buying them in the stores";
-                std::cout << endl << "Once youve gotten all artifacts you'll need to get back to the central pyramid";
+                std::cout << endl << "Once you haVE all the artifacts you'll need to get back to the central pyramid";
                 std::cout << endl << "The first one there with all the artifacts becomes the next pharoah";
                 std::cout << " \n \n Press any button and enter to roll the dice:";
                 cin >> interact;
@@ -1746,7 +1747,6 @@ int main() {
             }
         }
 
-
         //      This is if the player is in position 19
         else if (position == 19) {
 
@@ -1786,6 +1786,7 @@ int main() {
                 position = position + dice;
             }
         }
+
         //      This is if the player is on position 20
         else if (position == 20) {
             money = money + 2;
@@ -1808,6 +1809,7 @@ int main() {
             }
 
         }
+
         //      This is if the player is on position 21
         else if (position == 21)
         {
@@ -1816,7 +1818,6 @@ int main() {
             dice = diceRoll(role);
             position = position + dice;
         }
-
 
         //      This is if the player is on position 22
         else if (position == 22)
@@ -1836,6 +1837,7 @@ int main() {
             }
 
         }
+
         //      This is if the player is on position 23
         else if (position == 23)
         {
@@ -1852,6 +1854,7 @@ int main() {
                 position = position + dice;
             }
         }
+
         //      This is if the player is on position 24
         else if (position == 24)
         {
@@ -1869,6 +1872,7 @@ int main() {
                 position = position + dice;
             }
         }
+
         //      This is if the player is on position 25
         else if (position == 25) {
 
@@ -1885,6 +1889,7 @@ int main() {
                 position = position + dice;
             }
         }
+
         //      This is if the player is on position 26
         else if (position == 26)
         {
@@ -1901,6 +1906,7 @@ int main() {
                 position = position + dice;
             }
         }
+
         //      This is if the player is on position 27 (Need to Change this as a game over spot)
         else if (position == 27)
         {
@@ -1917,6 +1923,7 @@ int main() {
                 position = position + dice;
             }
         }
+
         //      This is if the player is on position 28
         else if (position == 28)
         {
@@ -1934,6 +1941,7 @@ int main() {
                 position = position + dice;
             }
         }
+
         //      This is if the player is on postion 29
         else if (position == 29)
         {
@@ -1951,15 +1959,6 @@ int main() {
                 position = position + dice;
             }
         }
-
-
-
-
-
-
-
-
-
 
         //     This is if the player is in position 30
         else if (position == 30) {
@@ -1981,6 +1980,7 @@ int main() {
 
         }
 
+        //      This is if the player is in position 31
         else if (position == 31)
         {
             std::cout << "This is a neutral square." << endl;
@@ -1990,6 +1990,7 @@ int main() {
 
             position = position + dice;
         }
+
         //      This is if the player is in position 32
         else if (position == 32)
         {
@@ -2000,6 +2001,7 @@ int main() {
             dice = diceRoll(role);
             position = position + dice;
         }
+
         //      This is if the player is in position 33
         else if (position == 33)
         {
@@ -2034,6 +2036,7 @@ int main() {
             dice = diceRoll(role);
             position = position + dice;
         }
+
         //      This is if the player is in position 36
         else if (position == 36)
         {
@@ -2044,6 +2047,7 @@ int main() {
             dice = diceRoll(role);
             position = position + dice;
         }
+
         //      This is if the player is in position 37
         else if (position == 37)
         {
@@ -2071,6 +2075,7 @@ int main() {
             }
 
         }
+
         //      This is if the player is in position 38
         else if (position == 38)
         {
@@ -2094,6 +2099,7 @@ int main() {
                 }
             }
         }
+
         //      This is if the player is in position 39
         else if (position == 39)
         {
@@ -2119,6 +2125,7 @@ int main() {
                 }
             }
         }
+
         //      This is if the player is in position 40
         else if (position == 40)
         {
@@ -2165,6 +2172,7 @@ int main() {
             }
 
         }
+
         //      This is if the player is in position 41
         else if (position == 41)
         {
@@ -2477,6 +2485,7 @@ int main() {
             else
                 position = position + dice;
         }
+
         //      This is if the player is in position 49
         else if (position == 49)
         {
@@ -2492,6 +2501,7 @@ int main() {
                 position = position + dice;
 
         }
+
         //      This is if the player is in position 50
         else if (position == 50)
         {
@@ -2507,9 +2517,6 @@ int main() {
             else
                 position = position + dice;
         }
-
-
-
 
         //     This is if the player is in position 51
         else if (position == 51) {
@@ -2744,7 +2751,7 @@ int main() {
         //     This is if the player is in position 67
         else if (position == 67) {
             money = money - 2;
-            std::cout << "You manouever yourself between some greenery in a very cool way! You drop a couple coins but don't pick them up because you're too cool for that!";
+            std::cout << "You manouever yourself between some greenery in a very cool way! You drop a couple coins but don't pick them up because you're too cool for that!\n";
             std::cout << "Press any button and enter to roll the dice:";
             cin >> interact;
             dice = diceRoll(role);
@@ -2930,7 +2937,7 @@ int main() {
             }
         }
 
-        //  This is if player is in position 77
+        //         This is if player is in position 77
         else if (position == 77) {
             std::cout << "You are at a bridge, if you would like to pass normally enter 0, if you would like to go to the bottom bridge enter 1: ";
             cin >> bridgeDecision;
@@ -2946,7 +2953,7 @@ int main() {
 
         }
 
-        //  This is if player is in position
+        //         This is if player is in position 78
         else if (position == 78) {
             flail = true;
             std::cout << "You have stumbled across the LEGENDARY FLAIL! It's kinda fun shaking it around...";
@@ -2956,7 +2963,7 @@ int main() {
             position = position + dice;
         }
 
-        //  This is if player is in position
+        //         This is if player is in position 79
         else if (position == 79) {
             money = money + 2;
             std::cout << "Oh god what's happening... you begin to shake. Your chest is burning, suddenly two coins burst out through your ribcage. It's the most excruciating pain you've ever felt. +2 coins.";
@@ -2971,7 +2978,7 @@ int main() {
             }
         }
 
-        //  This is if player is in position
+        //         This is if player is in position 80
         else if (position == 80) {
             money = money - 1;
             std::cout << "Nice a vending machine! It has a legendary sword in it! You put in a coin and input the code. Whoops wrong code, a pack of twizzlers get stuck in the machine...";
@@ -2986,7 +2993,7 @@ int main() {
             }
         }
 
-        //  This is if player is in position
+        //         This is if player is in position 81
         else if (position == 81) {
             money = money + 3;
             std::cout << "An ATM! You decide to check your savings account! One hundred coins! You withdraw all of your savings, subtracting the withdrawal fee you gain a total of 3 coins.";
@@ -3001,7 +3008,7 @@ int main() {
             }
         }
 
-        //  This is if player is in position
+        //         This is if player is in position 82
         else if (position == 82) {
             if (shovel == 1) {
                 money = money + 30;
@@ -3022,7 +3029,7 @@ int main() {
             }
         }
 
-        //  This is if player is in position
+        //         This is if player is in position 83
         else if (position == 83) {
             std::cout << "This is a neutral square.";
             std::cout << "\nPress any button and enter to roll the dice:";
@@ -3036,7 +3043,7 @@ int main() {
             }
         }
 
-        //  This is if player is in position
+        //  This is if player is in position 84
         else if (position == 84) {
             turns = turns + 1;
             std::cout << "Quicksand! It takes you a whole turn to wiggle out... Your wiggling skill went up by 1!";
@@ -3051,7 +3058,7 @@ int main() {
             }
         }
 
-        //  This is if player is in position
+        //  This is if player is in position 85
         else if (position == 85) {
             money = money + 1;
             std::cout << "You reach an epiphany. You write tirelessly for months about your philosophies and your emotional journey. You release your auto-biography and sell one copy. +1 coin.";
@@ -3066,7 +3073,7 @@ int main() {
             }
         }
 
-        //  This is if player is in position
+        //  This is if player is in position 86
         else if (position == 86) {
             money = money + 2;
             std::cout << "A street magician walks up to you and pulls a couple coins out of your ears! You knock him unconscious and take the coins.";
@@ -3081,7 +3088,7 @@ int main() {
             }
         }
 
-        //  This is if player is in position
+        //  This is if player is in position 87
         else if (position == 87) {
             money = money - 1;
             std::cout << "Your significant other hands you divorce papers, you hire a lawyer to look over them. -1 coin.";
@@ -3101,7 +3108,7 @@ int main() {
             }
         }
 
-        //  This is if player is in position
+        //  This is if player is in position 88
         else if (position == 88) {
             money = money + 2;
             std::cout << "Your divorce hearing went over well! You got the dog! Wuf waf! +2 coins!";
@@ -3121,7 +3128,7 @@ int main() {
             }
         }
 
-        //  This is if player is in position
+        //  This is if player is in position 89
         else if (position == 89) {
             std::cout << "This is a neutral square.";
             std::cout << "\nPress any button and enter to roll the dice:";
@@ -3140,7 +3147,7 @@ int main() {
             }
         }
 
-        //  This is if player is in position
+        //  This is if player is in position 90
         else if (position == 90) {
             money = money + 1;
             std::cout << "'This is a neutral square.' Reads the street sign. There's a coin on the ground. You pick it up.";
@@ -3165,7 +3172,7 @@ int main() {
             }
         }
 
-        //  This is if player is in position
+        //  This is if player is in position 91
         else if (position == 91) {
             money = money + 3;
             std::cout << "Some guy in a labcoat offers to buy a lock of your hair. You accept. He gave you three coins.";
@@ -3207,7 +3214,7 @@ int main() {
             }
         }
 
-        //  This is if player is in position
+        //  This is if player is in position 92
         else if (position == 92) {
             std::cout << "This is a neutral square.";
             std::cout << "\nPress any button and enter to roll the dice:";
@@ -3248,7 +3255,7 @@ int main() {
             }
         }
 
-        //  This is if player is in position
+        //  This is if player is in position 93
         else if (position == 93) {
             money = money - 1;
             std::cout << "It's a clone of you! They're naked and you pity them. You give them one coin.";
@@ -3290,7 +3297,7 @@ int main() {
             }
         }
 
-        //  This is if player is in position
+        //  This is if player is in position 94
         else if (position == 94) {
             bless2, bless1 = blessRoll(role, bless1, bless2);
             std::cout << "\nPress any button and enter to roll the dice:";
@@ -3331,7 +3338,7 @@ int main() {
             }
         }
 
-        //  This is if player is in position
+        //  This is if player is in position 95
         else if (position == 95) {
             money = money - 1;
             std::cout << "Some paparazzi catches you with your mistress! This could jeopardize your political career! You hurriedly pay him 1 coin to keep quiet.";
@@ -3349,7 +3356,7 @@ int main() {
             }
         }
 
-        //  This is if player is in position
+        //  This is if player is in position 96
         else if (position == 96) {
             money = money + 2;
             std::cout << "An innocent passerby! You mug them and take 2 coins off them.";
@@ -3367,7 +3374,7 @@ int main() {
             }
         }
 
-        //  This is if player is in position
+        //  This is if player is in position 97
         else if (position == 97) {
             crook = true;
             std::cout << "You've acquired the LEGENDARY CROOK! Not a criminal, a staff with a hook at the end!";
@@ -3385,7 +3392,7 @@ int main() {
             }
         }
 
-        //  This is if player is in position
+        //  This is if player is in position 98
         else if (position == 98) {
             std::cout << "This is a neutral square.";
             std::cout << "\nPress any button and enter to roll the dice:";
@@ -3398,7 +3405,7 @@ int main() {
             position = position + dice - 39;
         }
 
-        //  This is if player is in position
+        //  This is if player is in position 99
         else if (position == 99) {
             money = money + 3;
             std::cout << "You stumble upon an Elvis impersonator! You do your best Elvis impersonation at him! It is perfect! He is humiliated and gives you his wallet. +3 coins.";
@@ -3425,7 +3432,7 @@ int main() {
             }
         }
 
-        //  This is if player is in position
+        //  This is if player is in position 100
         else if (position == 100) {
             money = money + 2;
             std::cout << "Someone is jaywalking! You pretend you are a cop and ask for a bribe. He gives you 2 coins.";
@@ -3452,7 +3459,7 @@ int main() {
             }
         }
 
-        //  This is if player is in position
+        //  This is if player is in position 101
         else if (position == 101) {
             money = money - 1;
             std::cout << "Someone is jaywalking! You pretend you are a cop and ask for a bribe. He is a cop, you are fined 1 coin for impersonating a police officer.";
@@ -3473,6 +3480,8 @@ int main() {
                 position = position + dice - 94;
             }
         }
+
+        //      This is if the player is in position 102
         else if (position == 102) {
             health -= 3;
             std::cout << R"(
@@ -3495,7 +3504,7 @@ int main() {
             }
         }
 
-        //STILL NEED 102 & 103
+        //      This is if the player is in position 103
         else if (position == 103) {
             health -= 1;
             std::cout << R"( 
@@ -3624,59 +3633,73 @@ int main() {
                         position = position - 45 + dice;
                     }
                 }
-            }
-            if (crook == 1 && flail == 1 && robe == 1 && hat == 1 && belt == 1 && jewelry == 1) { //for if you are ending the game
-                std::cout << "Press any button and enter to roll the dice:";
-                cin >> interact;
-                dice = diceRoll(role);
-                if (dice <= 1) {
-                    position = position + dice;
-                }
-                else if (dice >= 7) {
-                    position = 8 - dice;
-                }
                 else {
-                    std::cout << "You must land directly on top of the throne. You are one space away. /n Please wait to roll again";
+                    std::cout << "You must land directly on top of the throne. You are seven spaces away. /n Please wait to roll again";
                 }
-            }
-        }
-
-        //     This is if the player is in position 107
-        else if (position == 107) {
-            health = health - 2;
-            std::cout << "You reach down to scratch your arm and you realize it was a snake the whole time! It bites you and you take 2 damage";
-            if (crook == 0 || flail == 0 || robe == 0 || hat == 0 || belt == 0 || jewelry == 0) { // if you are just starting
-                std::cout << "Press any button and enter to roll the dice:";
-
-                cin >> interact;
-                dice = diceRoll(role);
-                if (dice <= 5) {
-                    position = position - 102 + dice;
-                }
-                else if (dice <= 8) {
-                    std::cout << "You are at a fork in the path if you would like to head left enter 0 to head right enter 1: ";
-                    cin >> leftRight;
-                    if (leftRight == 0) {
-                        position = position - 102 + dice;
+                if (crook == 1 && flail == 1 && robe == 1 && hat == 1 && belt == 1 && jewelry == 1) { //for if you are ending the game
+                    std::cout << "Press any button and enter to roll the dice:";
+                    cin >> interact;
+                    dice = diceRoll(role);
+                    if (dice <= 1) {
+                        position = position + dice;
+                    }
+                    else if (dice >= 7) {
+                        position = 8 - dice;
                     }
                     else {
-                        position = position - 45 + dice;
+                        std::cout << "You must land directly on top of the throne. You are one space away. /n Please wait to roll again";
                     }
                 }
             }
-            if (crook == 1 && flail == 1 && robe == 1 && hat == 1 && belt == 1 && jewelry == 1) { //for if you are ending the game
-                std::cout << "Press any button and enter to roll the dice:";
-                cin >> interact;
-                dice = diceRoll(role);
-                if (dice >= 6) {
-                    position = 7 - dice;
+
+            //     This is if the player is in position 107
+            else if (position == 107) {
+                health = health - 2;
+                std::cout << "You reach down to scratch your arm and you realize it was a snake the whole time! It bites you and you take 2 damage";
+                if (crook == 0 || flail == 0 || robe == 0 || hat == 0 || belt == 0 || jewelry == 0) { // if you are just starting
+                    std::cout << "Press any button and enter to roll the dice:";
+
+                    cin >> interact;
+                    dice = diceRoll(role);
+                    if (dice <= 5) {
+                        position = position - 102 + dice;
+                    }
+                    else if (dice <= 8) {
+                        std::cout << "You are at a fork in the path if you would like to head left enter 0 to head right enter 1: ";
+                        cin >> leftRight;
+                        if (leftRight == 0) {
+                            position = position - 102 + dice;
+                        }
+                        else {
+                            position = position - 45 + dice;
+                        }
+                    }
                 }
-                else {
-                    std::cout << "You must land directly on top of the throne. You are one space away. /n Please wait to roll again";
+                    if (crook == 1 && flail == 1 && robe == 1 && hat == 1 && belt == 1 && jewelry == 1) { //for if you are ending the game
+                        std::cout << "Press any button and enter to roll the dice:";
+                        cin >> interact;
+                        dice = diceRoll(role);
+                        if (dice >= 6) {
+                            position = 7 - dice;
+                        }
+                        else {
+                            std::cout << "You must land directly on top of the throne. You are one space away. /n Please wait to roll again";
+                        }
+                    }
+                if (crook == 1 && flail == 1 && robe == 1 && hat == 1 && belt == 1 && jewelry == 1) { //for if you are ending the game
+                    std::cout << "Press any button and enter to roll the dice:";
+                    cin >> interact;
+                    dice = diceRoll(role);
+                    if (dice >= 6) {
+                        position = 7 - dice;
+                    }
+                    else {
+                        std::cout << "You must land directly on top of the throne. You are six spaces away. /n Please wait to roll again";
+                    }
                 }
             }
+
         }
 
     }
-
 }
