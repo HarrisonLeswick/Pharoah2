@@ -4,7 +4,6 @@
 #include <string>
 using namespace std;
 
-
 //Bosses
 int mummy(int role, int sword, int healthpotion, int health, int maxhealth, int monHealth, int monDamage) {
     std::cout << "The fearsome undead Mummy, Carlton!\n He rises from his sarcophagus and growls at the site of a puny mortal like you! ";
@@ -43,7 +42,7 @@ int mummy(int role, int sword, int healthpotion, int health, int maxhealth, int 
 
 )" << endl;
         std::cout << "Your health is currently " << health << endl;
-        std::cout << "The spiders health is currently " << monHealth << endl;
+        std::cout << "The mummys health is currently " << monHealth << endl;
         std::cout << "Press a button and then enter to roll for damage " << endl;
 
         cin >> interact;
@@ -1253,8 +1252,8 @@ int main() {
     int RUSure;
     int roleselection = 0;
     //variables for character stats
-    int position = 1;
-    int money = 0;
+    int position = 29;
+    int money = 10;
     int damage;
     int health;
     int maxhealth;
@@ -1286,7 +1285,7 @@ int main() {
     std::cout << "Please select your class:" << endl << endl;
     std::cout << "1. Slave: You start off with 10hp, immunity to fire ants and the ability to pickpocket without the pickpocket tool" << endl;
     std::cout << "2. Soldier: You start off with 14hp, you move with a 8 sided dice and you deal a extra 2 damage with every attack" << endl;
-    std::cout << "3. Noble: You start off with 8hp, and start the game with 10 gold" << endl;
+    std::cout << "3. Noble: You start off with 8hp, and start the game with an extra 10 gold" << endl;
     std::cout << "4. Priest: You start off with 8hp, when you draw a blessing you can draw from the top 3 cards" << endl;
     std::cout << "5. Merchant: You start off with 10hp, you can haggle down the price of each store item by some gold" << endl;
     std::cout << endl << "PLease type in the number of the role you would like:  ";
@@ -1308,7 +1307,7 @@ int main() {
         std::cout << "Congradulations! you are now a Noble!" << endl << endl;
         maxhealth = 8;
         health = 8;
-        money = 10;
+        money = money + 10;
         break;
     case 4:
         std::cout << "Congradulations! you are now a Priest!" << endl << endl;
@@ -1327,8 +1326,9 @@ int main() {
         string interact;
         turns = turns + 1;
         if (health <= 0) {
+            health = maxhealth;
             position = 1;
-            money = money - 15;
+            money = money - 5;
             if (money <= 0) {
                 money = 0;
             }
@@ -1337,7 +1337,8 @@ int main() {
             std::cout << "\n\nA servant found you unconscious and brought you back to the pyramid. You lost 15 dollars and were asleep for 3 nights\n\n";
 
         }
-        std::cout << "\n\nTurns: " << turns << "       Position: " << position << "       Gold: " << money << "\n\n";
+        std::cout << "\n\nTurns: " << turns << "       Position: " << position << "       Gold: " << money << "       Health: " << health << "\n\n";
+
 
         //this is if the player is in position 1
         if (position == 1) {
@@ -1622,7 +1623,12 @@ int main() {
             std::cout << "Press any button and enter to roll the dice:";
             cin >> interact;
             dice = diceRoll(role);
-            position = position + dice;
+            if (dice >= 7) {
+                position = 18;
+            }
+            else {
+                position = position + dice;
+            }
         }
 
         //     This is if the player is in position 12
@@ -1632,7 +1638,12 @@ int main() {
             std::cout << "Press any button and enter to roll the dice:";
             cin >> interact;
             dice = diceRoll(role);
-            position = position + dice;
+            if (dice >= 6) {
+                position = 18;
+            }
+            else {
+                position = position + dice;
+            }
         }
 
         //     This is if the player is in position 13
@@ -1642,21 +1653,11 @@ int main() {
             std::cout << "Press any button and enter to roll the dice:";
             cin >> interact;
             dice = diceRoll(role);
-            if (dice >= 8) {
-                std::cout << "You are at a bridge, if you would like to pass normally enter 0, if you would like to go down to the middle bridge enter 1, if you would like to go to the bottom bridge enter 2: ";
-                cin >> bridgeDecision;
-                if (bridgeDecision == 0) {
-                    position = position + dice;
-                }
-                else if (bridgeDecision == 1) {
-                    position = position + dice + 56;
-                }
-                else if (bridgeDecision == 2) {
-                    position = position + dice + 21;
-                }
+
+            if (dice >= 5) {
+                position = 18;
             }
-            else
-            {
+            else {
                 position = position + dice;
             }
         }
@@ -1667,23 +1668,10 @@ int main() {
             std::cout << "Press any button and enter to roll the dice:";
             cin >> interact;
             dice = diceRoll(role);
-            if (dice >= 7) {
-                std::cout << "You are at a bridge, if you would like to pass normally enter 0, if you would like to go down to the middle bridge enter 1, if you would like to go to the bottom bridge enter 2: ";
-                cin >> bridgeDecision;
-                if (bridgeDecision == 0) {
-                    position = position + dice;
-                }
-                else if (bridgeDecision == 1) {
-                    position = position + dice + 56;
-                }
-                else if (bridgeDecision == 2) {
-                    position = position + dice + 21;
-                }
-
-
+            if (dice >= 4) {
+                position = 18;
             }
-            else
-            {
+            else {
                 position = position + dice;
             }
 
@@ -1696,21 +1684,10 @@ int main() {
             std::cout << "Press any button and enter to roll the dice:";
             cin >> interact;
             dice = diceRoll(role);
-            if (dice >= 6) {
-                std::cout << "You are at a bridge, if you would like to pass normally enter 0, if you would like to go down to the middle bridge enter 1, if you would like to go to the bottom bridge enter 2: ";
-                cin >> bridgeDecision;
-                if (bridgeDecision == 0) {
-                    position = position + dice;
-                }
-                else if (bridgeDecision == 1) {
-                    position = position + dice + 56;
-                }
-                else if (bridgeDecision == 2) {
-                    position = position + dice + 21;
-                }
+            if (dice >= 3) {
+                position = 18;
             }
-            else
-            {
+            else {
                 position = position + dice;
             }
         }
@@ -1722,23 +1699,10 @@ int main() {
             std::cout << "Press any button and enter to roll the dice:";
             cin >> interact;
             dice = diceRoll(role);
-            if (dice >= 5) {
-                std::cout << "You are at a bridge, if you would like to pass normally enter 0, if you would like to go down to the middle bridge enter 1, if you would like to go to the bottom bridge enter 2: ";
-                cin >> bridgeDecision;
-                if (bridgeDecision == 0) {
-                    position = position + dice;
-                }
-                else if (bridgeDecision == 1) {
-                    position = position + dice + 56;
-                }
-                else if (bridgeDecision == 2) {
-                    position = position + dice + 21;
-                }
-
-
+            if (dice >= 2) {
+                position = 18;
             }
-            else
-            {
+            else {
                 position = position + dice;
             }
         }
@@ -1750,25 +1714,7 @@ int main() {
             std::cout << "Press any button and enter to roll the dice:";
             cin >> interact;
             dice = diceRoll(role);
-            if (dice >= 4) {
-                std::cout << "You are at a bridge, if you would like to pass normally enter 0, if you would like to go down to the middle bridge enter 1, if you would like to go to the bottom bridge enter 2: ";
-                cin >> bridgeDecision;
-                if (bridgeDecision == 0) {
-                    position = position + dice;
-                }
-                else if (bridgeDecision == 1) {
-                    position = position + dice + 56;
-                }
-                else if (bridgeDecision == 2) {
-                    position = position + dice + 21;
-                }
-
-
-            }
-            else
-            {
-                position = position + dice;
-            }
+            position = 18;
         }
 
         //      This is if the player is in position 18
@@ -1860,10 +1806,7 @@ int main() {
                     position = position + dice + 21;
                 }
             }
-            else
-            {
-                position = position + dice;
-            }
+
         }
         //      This is if the player is on position 21
         else if (position == 21)
@@ -1871,24 +1814,10 @@ int main() {
             std::cout << "Press any button and enter to roll the dice:";
             cin >> interact;
             dice = diceRoll(role);
-            if (dice >= 1) {
-                std::cout << "You are at a bridge, if you would like to pass normally enter 0, if you would like to go down to the middle bridge enter 1, if you would like to go to the bottom bridge enter 2: ";
-                cin >> bridgeDecision;
-                if (bridgeDecision == 0) {
-                    position = position + dice;
-                }
-                else if (bridgeDecision == 1) {
-                    position = position + dice + 56;
-                }
-                else if (bridgeDecision == 2) {
-                    position = position + dice + 21;
-                }
-            }
-            else
-            {
-                position = position + dice;
-            }
+            position = position + dice;
         }
+
+
         //      This is if the player is on position 22
         else if (position == 22)
         {
@@ -2034,15 +1963,15 @@ int main() {
 
         //     This is if the player is in position 30
         else if (position == 30) {
-
+            int x;
             int monHealth = 15;
             int monDamage = 4;
             health, healthpotion = mummy(role, sword, healthpotion, health, maxhealth, monHealth, monDamage);
-
+            cin >> x;
             if (health <= 0) {
 
 
-                position = 31;
+                position = 1;
                 health = 0;
             }
             else {
@@ -2226,7 +2155,12 @@ int main() {
                     }
                 }
                 else {
-                    position = position + dice + 57;
+                    if (dice >= 7) {
+                        position = 104;
+                    }
+                    else {
+                        position = position + dice + 57;
+                    }
                 }
             }
 
@@ -2249,7 +2183,7 @@ int main() {
                 std::cout << "You are at a fork in the path, if you would like to head left enter 0 to head right enter 1: ";
                 cin >> leftRight;
                 if (leftRight == 0) {
-                    //vehdsKVbfdsyukvzgdyuvsdbhuzldvgkbyjvgdybuzdvkzdjhdgvjudhku fd
+
                     if (dice < 7)
                     {
                         position = position + dice;
@@ -2267,7 +2201,12 @@ int main() {
                     }
                 }
                 else {
-                    position = position + dice + 57;
+                    if (dice >= 6) {
+                        position = 104;
+                    }
+                    else {
+                        position = position + dice + 57;
+                    }
                 }
             }
         }
@@ -2307,7 +2246,12 @@ int main() {
                     }
                 }
                 else {
-                    position = position + dice + 57;
+                    if (dice >= 5) {
+                        position = 104;
+                    }
+                    else {
+                        position = position + dice + 57;
+                    }
                 }
             }
 
@@ -2352,7 +2296,12 @@ int main() {
                     }
                 }
                 else {
-                    position = position + dice + 57;
+                    if (dice >= 4) {
+                        position = 104;
+                    }
+                    else {
+                        position = position + dice + 57;
+                    }
                 }
             }
 
@@ -2362,42 +2311,64 @@ int main() {
         else if (position == 44)
         {
             bless2, bless1 = blessRoll(role, bless1, bless2);
-            std::cout << "Press any button and enter to roll the dice:";
-            cin >> interact;
-            dice = diceRoll(role);
-            if (dice < 1)
-            {
-                position = position + dice;
-            }
-            else if (dice >= 1)
-            {
-                std::cout << "You are at a fork in the path, if you would like to head left enter 0 to head right enter 1: ";
-                cin >> leftRight;
-                if (leftRight == 0) {
-                    //vehdsKVbfdsyukvzgdyuvsdbhuzldvgkbyjvgdybuzdvkzdjhdgvjudhku fd
-                    if (dice < 4)
-                    {
-                        position = position + dice;
-                    }
-                    if (dice >= 4)
-                    {
-                        std::cout << "There is another fork in the path, if you would like to head left enter 0 to head right enter 1: ";
-                        cin >> leftRight;
-                        if (leftRight == 0) {
-                            if (dice >= 7) {
-                                position = 51;
+
+            if (crook == 0 || flail == 0 || robe == 0 || hat == 0 || belt == 0 || jewelry == 0) { // if you are just starting
+                std::cout << "Press any button and enter to roll the dice:";
+                cin >> interact;
+                dice = diceRoll(role);
+
+
+                if (dice >= 1)
+                {
+                    std::cout << "You are at a fork in the path, if you would like to head left enter 0 to head right enter 1: ";
+                    cin >> leftRight;
+                    if (leftRight == 0) {
+
+                        if (dice < 4)
+                        {
+                            position = position + dice;
+                        }
+                        if (dice >= 4)
+                        {
+                            std::cout << "There is another fork in the path, if you would like to head left enter 0 to head right enter 1: ";
+                            cin >> leftRight;
+                            if (leftRight == 0) {
+                                if (dice >= 7) {
+                                    position = 51;
+                                }
+                                else
+                                    position = position + dice;
                             }
-                            else
-                                position = position + dice;
+                            else {
+                                position = position + dice + 39;
+                            }
+                        }
+                    }
+                    else {
+                        if (dice >= 3) {
+                            position = 104;
                         }
                         else {
-                            position = position + dice + 39;
+                            position = position + dice + 57;
                         }
                     }
+
                 }
-                else {
-                    position = position + dice + 57;
+            }
+            if (crook == 1 && flail == 1 && robe == 1 && hat == 1 && belt == 1 && jewelry == 1) { //for if you are ending the game
+                std::cout << "Press any button and enter to roll the dice:";
+                cin >> interact;
+                dice = diceRoll(role);
+                if (dice <= 6) {
+                    position = position + 57;
                 }
+                else if (dice == 7) {
+                    position = 6;
+                }
+                else if (dice == 8) {
+                    position = 5;
+                }
+
             }
         }
 
@@ -2729,6 +2700,9 @@ int main() {
             std::cout << "Press any button and enter to roll the dice:";
             cin >> interact;
             dice = diceRoll(role);
+            if (dice >= 7) {
+                position = 18;
+            }
             if (dice >= 3) {
                 position = position - 53 + dice;
             }
@@ -2744,6 +2718,9 @@ int main() {
             std::cout << "Press any button and enter to roll the dice:";
             cin >> interact;
             dice = diceRoll(role);
+            if (dice >= 6) {
+                position = 18;
+            }
             if (dice >= 2) {
                 position = position - 53 + dice;
             }
@@ -2758,6 +2735,9 @@ int main() {
             std::cout << "Press any button and enter to roll the dice:";
             cin >> interact;
             dice = diceRoll(role);
+            if (dice >= 6) {
+                position = 18;
+            }
             position = position - 53 + dice;
         }
 
@@ -2788,7 +2768,10 @@ int main() {
             std::cout << "Press any button and enter to roll the dice:";
             cin >> interact;
             dice = diceRoll(role);
-            if (dice >= 8) {
+            if (dice < 8) {
+                position = position + dice;
+            }
+            if (dice == 8) {
                 std::cout << "You are at a bridge, if you would like to pass normally enter 0, if you would like to go to the bottom bridge enter 1: ";
                 cin >> bridgeDecision;
                 if (bridgeDecision == 0) {
@@ -2816,6 +2799,9 @@ int main() {
                     position = position + dice - 35;
                 }
             }
+            else {
+                position = position + dice;
+            }
         }
 
         //     This is if the player is in position 71
@@ -2833,6 +2819,9 @@ int main() {
                 else if (bridgeDecision == 1) {
                     position = position + dice - 35;
                 }
+            }
+            else {
+                position = position + dice;
             }
         }
 
@@ -2852,6 +2841,9 @@ int main() {
                     position = position + dice - 35;
                 }
             }
+            else {
+                position = position + dice;
+            }
         }
 
         //     This is if the player is in position 73
@@ -2860,6 +2852,9 @@ int main() {
             std::cout << "Press any button and enter to roll the dice:";
             cin >> interact;
             dice = diceRoll(role);
+            if (dice < 4) {
+                position = position + dice;
+            }
             if (dice >= 4) {
                 std::cout << "You are at a bridge, if you would like to pass normally enter 0, if you would like to go to the bottom bridge enter 1: ";
                 cin >> bridgeDecision;
@@ -2879,6 +2874,9 @@ int main() {
             std::cout << "Press any button and enter to roll the dice:";
             cin >> interact;
             dice = diceRoll(role);
+            if (dice < 3) {
+                position = position + dice;
+            }
             if (dice >= 3) {
                 std::cout << "You are at a bridge, if you would like to pass normally enter 0, if you would like to go to the bottom bridge enter 1: ";
                 cin >> bridgeDecision;
@@ -2898,6 +2896,9 @@ int main() {
             std::cout << "Press any button and enter to roll the dice:";
             cin >> interact;
             dice = diceRoll(role);
+            if (dice < 2) {
+                position = position + dice;
+            }
             if (dice >= 2) {
                 std::cout << "You are at a bridge, if you would like to pass normally enter 0, if you would like to go to the bottom bridge enter 1: ";
                 cin >> bridgeDecision;
@@ -2916,6 +2917,7 @@ int main() {
             std::cout << "Press any button and enter to roll the dice:";
             cin >> interact;
             dice = diceRoll(role);
+
             if (dice >= 1) {
                 std::cout << "You are at a bridge, if you would like to pass normally enter 0, if you would like to go to the bottom bridge enter 1: ";
                 cin >> bridgeDecision;
@@ -3336,6 +3338,9 @@ int main() {
             std::cout << "\nPress any button and enter to roll the dice:";
             cin >> interact;
             dice = diceRoll(role);
+            if (dice == 8) {
+                position = 63;
+            }
             if (dice >= 4) {
                 position = position + dice - 39;
             }
@@ -3351,6 +3356,9 @@ int main() {
             std::cout << "\nPress any button and enter to roll the dice:";
             cin >> interact;
             dice = diceRoll(role);
+            if (dice >= 7) {
+                position = 63;
+            }
             if (dice >= 3) {
                 position = position + dice - 39;
             }
@@ -3366,6 +3374,9 @@ int main() {
             std::cout << "\nPress any button and enter to roll the dice:";
             cin >> interact;
             dice = diceRoll(role);
+            if (dice >= 6) {
+                position = 63;
+            }
             if (dice >= 2) {
                 position = position + dice - 39;
             }
@@ -3378,8 +3389,12 @@ int main() {
         else if (position == 98) {
             std::cout << "This is a neutral square.";
             std::cout << "\nPress any button and enter to roll the dice:";
+
             cin >> interact;
             dice = diceRoll(role);
+            if (dice >= 6) {
+                position = 63;
+            }
             position = position + dice - 39;
         }
 
@@ -3444,7 +3459,7 @@ int main() {
             std::cout << "\nPress any button and enter to roll the dice:";
             cin >> interact;
             dice = diceRoll(role);
-            if (dice >= 4) {
+            if (dice >= 3) {
                 std::cout << "\nYou are at a fork in the path, if you would like to head left enter 0 to head right enter 1: ";
                 cin >> leftRight;
                 if (leftRight == 0) {
@@ -3458,10 +3473,52 @@ int main() {
                 position = position + dice - 94;
             }
         }
+        else if (position == 102) {
+            health -= 3;
+            std::cout << R"(
+         ("`-''-/").___..--''"`-._ 
+          `6_ 6  )   `-.  (     ).`-.__.`) 
+          (_Y_.)'  ._   )  `._ `. ``-..-' 
+            _..`--'_..-_/  /--'_.'
+           ((((.-''  ((((.'  (((.-' 
+         )" << endl;
+            std::cout << "A cat jumped out of a bush and attacked you dealing 3 damage." << endl;
+            std::cout << "Press any button and enter to roll the dice:";
+            cin >> interact;
+            dice = diceRoll(role);
+            if (dice >= 2) {
+                position = 104;
+            }
+            else {
+                position = 103;
+
+            }
+        }
 
         //STILL NEED 102 & 103
+        else if (position == 103) {
+            health -= 1;
+            std::cout << R"( 
+      ,_      _,
+        '.__.'
+   '-,   (__)   ,-'
+     '._ .::. _.'
+       _'(^^)'_
+    _,` `>\/<` `,_
+   `  ,-` )( `-,  `
+      |  /==\  |
+    ,-'  |=-|  '-,
+         )-=(
+         \__/ )" << endl;
+            std::cout << "Some fire ants bit your foot and you lost 1Hp." << endl;
+            std::cout << "Press any button and enter to roll the dice:";
+            cin >> interact;
+            dice = diceRoll(role);
+            position = 104;
+        }
 
-            //     This is if the player is in position 104
+
+        //     This is if the player is in position 104
         else if (position == 104) {
             if (role == 5) {
                 sandyShopMerc(money, shovel, armor, jewelry, maxhealth);
