@@ -2,19 +2,10 @@
 #include <random>
 #include <ctime>
 #include <string>
-
 using namespace std;
 
 
-
-
-
-//-Add things for each spot into array
-//-Shop
-//-Boss
-//-Health
-//-Attack
-
+//Bosses
 int mummy(int role, int sword, int healthpotion, int health, int maxhealth, int monHealth, int monDamage) {
     std::cout << "The fearsome undead Mummy, Carlton!\n He rises from his sarcophagus and growls at the site of a puny mortal like you! ";
     while (monHealth > 0 && health > 0) {
@@ -399,8 +390,8 @@ int gustave(int role, int sword, int healthpotion, int health, int maxhealth, in
     return health;
 }
 
-//void oasisShop(int& , bool& , bool& , bool&);
-void oasisShop(int cash, bool pickpocket, bool healthPotion, bool sword) {
+//Oasis shops
+void oasisShop(int& cash, bool& pickpocket, bool& healthPotion, bool& sword) {
     char userAns;
     char userNumber;
     int pickPocketPrice = 5;
@@ -444,7 +435,6 @@ void oasisShop(int cash, bool pickpocket, bool healthPotion, bool sword) {
     std::cout << endl;
 
     std::cout << "4. Exit." << endl;
-
     do {
         cin >> userNumber;
 
@@ -457,10 +447,10 @@ void oasisShop(int cash, bool pickpocket, bool healthPotion, bool sword) {
             else if (cash >= pickPocketPrice)
             {
                 cash -= pickPocketPrice;
-
+                pickpocket = 1;
                 std::cout << "Thank you for your purchase! You currently have " << cash << " gold left. \n Would you like anything else?" << endl;
                 cin >> userAns;
-
+                
                 if (userAns == 'Yes' || userAns == 'yes' || userAns == 'y' || userAns == 'Y')
                 {
                     break;
@@ -485,6 +475,7 @@ void oasisShop(int cash, bool pickpocket, bool healthPotion, bool sword) {
             else if (cash >= healthPotionPrice)
             {
                 cash -= healthPotionPrice;
+                healthPotion = 1;
                 std::cout << "Thank you for your purchase! You currently have " << cash << " gold left. \n Would you like anything else?" << endl;
                 cin >> userAns;
 
@@ -512,6 +503,153 @@ void oasisShop(int cash, bool pickpocket, bool healthPotion, bool sword) {
             else if (cash >= swordPrice)
             {
                 cash -= swordPrice;
+                sword = 1;
+                std::cout << "Thank you for your purchase! You currently have " << cash << " gold left. \n Would you like anything else?" << endl;
+                cin >> userAns;
+
+                if (userAns == 'Yes' || userAns == 'yes' || userAns == 'y' || userAns == 'Y')
+                {
+                    break;
+                }
+                else if (userAns == 'No' || userAns == 'no' || userAns == 'n' || userAns == 'N')
+                {
+                    userLoop = false;
+                    break;
+                }
+
+            }
+            else if (cash < swordPrice)
+            {
+                std::cout << "Sorry you dont have enough gold to purchase this item. " << endl;
+            }
+            break;
+
+        case '4':
+            userLoop = false;
+            break;
+
+        }
+
+    } while (userLoop == true);
+
+    std::cout << endl;
+    std::cout << "Clerk: Thank you for stopping by, have a nice day :) " << endl;
+    std::cout << endl;
+}
+void oasisShopMerc(int& cash, bool& pickpocket, bool& healthPotion, bool& sword) {
+    char userAns;
+    char userNumber;
+    int pickPocketPrice = 4;
+    int healthPotionPrice = 6;
+    int swordPrice = 12;
+    bool userLoop = true;
+
+    std::cout << "                              ^             ^               ^!^" << endl;
+    std::cout << "                                 ^ _______________________________" << endl;
+    std::cout << "                                  [=U=U=U=U=U=U=U=U=U=U=U=U=U=U=U=]" << endl;
+    std::cout << "                                  |.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.|" << endl;
+    std::cout << "                                  |        +-+-+-+-+-+-+-         |" << endl;
+    std::cout << "                                  |       |The Oasis Shop|        |" << endl;
+    std::cout << "                                  |.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.|" << endl;
+    std::cout << "                                  |  _________  __ __  _________  |" << endl;
+    std::cout << "                                _ | |___   _  ||[]|[]||  _      | |" << endl;
+    std::cout << "                               (!)||OPEN|_(!)_|| ,| ,||_(!)_____| |(!)" << endl;
+    std::cout << "                              .T~T|:.....:T~T.:|__|__|:.T~T.:....:|T~T." << endl;
+    std::cout << "                              ||_||||||||||_|||||||||||||_||||||||||_||" << endl;
+    std::cout << "                              ~\=/~~~~~~~~\=/~~~~~~~~~~~\=/~~~~~~~~\=/~" << endl;
+    std::cout << "                                | -------- | ----------- | -------- |" << endl;
+    std::cout << "                              ~ |~^ ^~~^ ~~| ~^  ~~ ^~^~ |~ ^~^ ~~^ |^~" << endl;
+    std::cout << endl;
+
+
+    std::cout << "Hello, wellcome to the oasis shop." << endl;
+    std::cout << "What would you like to purchase?" << endl;
+    std::cout << endl;
+    std::cout << "Your current gold is = " << cash << endl;
+
+    std::cout << "1. Pick Pocket Glocket -- 4 Gold." << endl;
+    std::cout << "~ Gives you the ability to steal gold/items form unconcious players ~" << endl;
+    std::cout << endl;
+
+    std::cout << "2. Health Potion -- 6 Gold." << endl;
+    std::cout << "~ Instantly recovers your HP back to full ~" << endl;
+    std::cout << endl;
+
+    std::cout << "3. Iron Sword -- 12 Gold." << endl;
+    std::cout << "~ When equipped will increase the player's damage by 3 points" << endl;
+    std::cout << endl;
+
+    std::cout << "4. Exit." << endl;
+
+    do {
+        cin >> userNumber;
+
+        switch (userNumber)
+        {
+        case '1':
+            if (pickpocket == 1) {
+                std::cout << "Sorry you already have this item in your inventory" << endl;
+            }
+            else if (cash >= pickPocketPrice)
+            {
+                cash -= pickPocketPrice;
+                pickpocket = 1;
+                std::cout << "Thank you for your purchase! You currently have " << cash << " gold left. \n Would you like anything else?" << endl;
+                cin >> userAns;
+
+                if (userAns == 'Yes' || userAns == 'yes' || userAns == 'y' || userAns == 'Y')
+                {
+                    break;
+                }
+                else if (userAns == 'No' || userAns == 'no' || userAns == 'n' || userAns == 'N')
+                {
+                    userLoop = false;
+                    break;
+                }
+
+
+            }
+            else if (cash < pickPocketPrice)
+            {
+                std::cout << "Sorry you dont have enough gold to purchase this item. " << endl;
+            }
+            break;
+        case '2':
+            if (healthPotion == 1) {
+                std::cout << "Sorry you already have this item in your inventory" << endl;
+            }
+            else if (cash >= healthPotionPrice)
+            {
+                cash -= healthPotionPrice;
+                healthPotion = 1;
+                std::cout << "Thank you for your purchase! You currently have " << cash << " gold left. \n Would you like anything else?" << endl;
+                cin >> userAns;
+
+                if (userAns == 'Yes' || userAns == 'yes' || userAns == 'y' || userAns == 'Y')
+                {
+                    break;
+                }
+                else if (userAns == 'No' || userAns == 'no' || userAns == 'n' || userAns == 'N')
+                {
+                    userLoop = false;
+                    break;
+                }
+
+            }
+            else if (cash < healthPotionPrice)
+            {
+                std::cout << "Sorry you dont have enough gold to purchase this item. " << endl;
+            }
+            break;
+        case '3':
+
+            if (sword == 1) {
+                std::cout << "Sorry you already have this item in your inventory" << endl;
+            }
+            else if (cash >= swordPrice)
+            {
+                cash -= swordPrice;
+                sword = 1;
                 std::cout << "Thank you for your purchase! You currently have " << cash << " gold left. \n Would you like anything else?" << endl;
                 cin >> userAns;
 
@@ -545,7 +683,304 @@ void oasisShop(int cash, bool pickpocket, bool healthPotion, bool sword) {
     std::cout << endl;
 }
 
+//Sandy shops
+void sandyShop(int& cash, bool& shovel, bool& armor, bool& jewelry, int& maxhealth) {
+    char userAns;
+    char userNumber;
+    int shovelprice = 8;
+    int armorPrice = 20;
+    int jewelryPrice = 50;
+    bool userLoop = true;
+
+    std::cout << "                              ^             ^               ^!^" << endl;
+    std::cout << "                                 ^ _______________________________" << endl;
+    std::cout << "                                  [=U=U=U=U=U=U=U=U=U=U=U=U=U=U=U=]" << endl;
+    std::cout << "                                  |.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.|" << endl;
+    std::cout << "                                  |        +-+-+-+-+-+-+-         |" << endl;
+    std::cout << "                                  |       |The Sandy Shop|        |" << endl;
+    std::cout << "                                  |.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.|" << endl;
+    std::cout << "                                  |  _________  __ __  _________  |" << endl;
+    std::cout << "                                _ | |___   _  ||[]|[]||  _      | |" << endl;
+    std::cout << "                               (!)||OPEN|_(!)_|| ,| ,||_(!)_____| |(!)" << endl;
+    std::cout << "                              .T~T|:.....:T~T.:|__|__|:.T~T.:....:|T~T." << endl;
+    std::cout << "                              ||_||||||||||_|||||||||||||_||||||||||_||" << endl;
+    std::cout << "                              ~\=/~~~~~~~~\=/~~~~~~~~~~~\=/~~~~~~~~\=/~" << endl;
+    std::cout << "                                | -------- | ----------- | -------- |" << endl;
+    std::cout << "                              ~ |~^ ^~~^ ~~| ~^  ~~ ^~^~ |~ ^~^ ~~^ |^~" << endl;
+    std::cout << endl;
+
+
+    std::cout << "Hello, wellcome to the Sandy shop." << endl;
+    std::cout << "What would you like to purchase?" << endl;
+    std::cout << endl;
+    std::cout << "Your current gold is = " << cash << endl;
+
+    std::cout << "1. Shovel -- 8 Gold." << endl;
+    std::cout << "~ Gives you the ability to dig up buried treasure chests hidden around the map ~" << endl;
+    std::cout << endl;
+
+    std::cout << "2. Armor -- 20 Gold." << endl;
+    std::cout << "~ When equipped will increase the player's max health by 5 points ~" << endl;
+    std::cout << endl;
+
+    std::cout << "3. Jewelry -- 50 Gold." << endl;
+    std::cout << "~ This is one of the pieces required to become Pharoah ~" << endl;
+    std::cout << endl;
+
+    std::cout << "4. Exit." << endl;
+
+    do {
+        cin >> userNumber;
+
+        switch (userNumber)
+        {
+        case '1':
+            if (shovel == 1) {
+                std::cout << "Sorry you already have this item in your inventory" << endl;
+            }
+            else if (cash >= shovelprice)
+            {
+                cash -= shovelprice;
+                shovel = 1;
+                std::cout << "Thank you for your purchase! You currently have " << cash << " gold left. \n Would you like anything else?" << endl;
+                cin >> userAns;
+
+                if (userAns == 'Yes' || userAns == 'yes' || userAns == 'y' || userAns == 'Y')
+                {
+                    break;
+                }
+                else if (userAns == 'No' || userAns == 'no' || userAns == 'n' || userAns == 'N')
+                {
+                    userLoop = false;
+                    break;
+                }
+
+
+            }
+            else if (cash <shovelprice)
+            {
+                std::cout << "Sorry you dont have enough gold to purchase this item. " << endl;
+            }
+            break;
+        case '2':
+            if (armor == 1) {
+                std::cout << "Sorry you already have this item in your inventory" << endl;
+            }
+            else if (cash >= armorPrice)
+            {
+                cash -= armorPrice;
+                armor = 1;
+                maxhealth = maxhealth + 5;
+                std::cout << "Thank you for your purchase! You currently have " << cash << " gold left. \n Would you like anything else?" << endl;
+                cin >> userAns;
+
+                if (userAns == 'Yes' || userAns == 'yes' || userAns == 'y' || userAns == 'Y')
+                {
  
+                    break;
+                }
+                else if (userAns == 'No' || userAns == 'no' || userAns == 'n' || userAns == 'N')
+                {
+                    userLoop = false;
+                    break;
+                }
+
+            }
+            else if (cash < armorPrice)
+            {
+                std::cout << "Sorry you dont have enough gold to purchase this item. " << endl;
+            }
+            break;
+        case '3':
+
+            if (jewelry == 1) {
+                std::cout << "Sorry you already have this item in your inventory" << endl;
+            }
+            else if (cash >= jewelryPrice)
+            {
+                cash -= jewelryPrice;
+                jewelry = 1;
+                std::cout << "Thank you for your purchase! You currently have " << cash << " gold left. \n Would you like anything else?" << endl;
+                cin >> userAns;
+
+                if (userAns == 'Yes' || userAns == 'yes' || userAns == 'y' || userAns == 'Y')
+                {
+                    break;
+                }
+                else if (userAns == 'No' || userAns == 'no' || userAns == 'n' || userAns == 'N')
+                {
+                    userLoop = false;
+                    break;
+                }
+
+            }
+            else if (cash < jewelryPrice)
+            {
+                std::cout << "Sorry you dont have enough gold to purchase this item. " << endl;
+            }
+            break;
+
+        case '4':
+            userLoop = false;
+            break;
+
+        }
+
+    } while (userLoop == true);
+
+    std::cout << endl;
+    std::cout << "Clerk: Thank you for stopping by, have a nice day :) " << endl;
+    std::cout << endl;
+}
+void sandyShopMerc(int& cash, bool& shovel, bool& armor, bool& jewelry, int& maxhealth) {
+    char userAns;
+    char userNumber;
+    int shovelprice = 5;
+    int armorPrice = 12;
+    int jewelryPrice = 35;
+    bool userLoop = true;
+
+    std::cout << "                              ^             ^               ^!^" << endl;
+    std::cout << "                                 ^ _______________________________" << endl;
+    std::cout << "                                  [=U=U=U=U=U=U=U=U=U=U=U=U=U=U=U=]" << endl;
+    std::cout << "                                  |.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.|" << endl;
+    std::cout << "                                  |        +-+-+-+-+-+-+-         |" << endl;
+    std::cout << "                                  |       |The Sandy Shop|        |" << endl;
+    std::cout << "                                  |.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.|" << endl;
+    std::cout << "                                  |  _________  __ __  _________  |" << endl;
+    std::cout << "                                _ | |___   _  ||[]|[]||  _      | |" << endl;
+    std::cout << "                               (!)||OPEN|_(!)_|| ,| ,||_(!)_____| |(!)" << endl;
+    std::cout << "                              .T~T|:.....:T~T.:|__|__|:.T~T.:....:|T~T." << endl;
+    std::cout << "                              ||_||||||||||_|||||||||||||_||||||||||_||" << endl;
+    std::cout << "                              ~\=/~~~~~~~~\=/~~~~~~~~~~~\=/~~~~~~~~\=/~" << endl;
+    std::cout << "                                | -------- | ----------- | -------- |" << endl;
+    std::cout << "                              ~ |~^ ^~~^ ~~| ~^  ~~ ^~^~ |~ ^~^ ~~^ |^~" << endl;
+    std::cout << endl;
+
+
+    std::cout << "Hello, wellcome to the Sandy shop." << endl;
+    std::cout << "What would you like to purchase?" << endl;
+    std::cout << endl;
+    std::cout << "Your current gold is = " << cash << endl;
+
+    std::cout << "1. Shovel -- 5 Gold." << endl;
+    std::cout << "~ Gives you the ability to dig up buried treasure chests hidden around the map ~" << endl;
+    std::cout << endl;
+
+    std::cout << "2. Armor -- 12 Gold." << endl;
+    std::cout << "~ When equipped will increase the player's max health by 5 points ~" << endl;
+    std::cout << endl;
+
+    std::cout << "3. Jewelry -- 35 Gold." << endl;
+    std::cout << "~ This is one of the pieces required to become Pharoah ~" << endl;
+    std::cout << endl;
+
+    std::cout << "4. Exit." << endl;
+
+    do {
+        cin >> userNumber;
+
+        switch (userNumber)
+        {
+        case '1':
+            if (shovel == 1) {
+                std::cout << "Sorry you already have this item in your inventory" << endl;
+            }
+            else if (cash >= shovelprice)
+            {
+                cash -= shovelprice;
+                shovel = 1;
+                std::cout << "Thank you for your purchase! You currently have " << cash << " gold left. \n Would you like anything else?" << endl;
+                cin >> userAns;
+
+                if (userAns == 'Yes' || userAns == 'yes' || userAns == 'y' || userAns == 'Y')
+                {
+                    break;
+                }
+                else if (userAns == 'No' || userAns == 'no' || userAns == 'n' || userAns == 'N')
+                {
+                    userLoop = false;
+                    break;
+                }
+
+
+            }
+            else if (cash < shovelprice)
+            {
+                std::cout << "Sorry you dont have enough gold to purchase this item. " << endl;
+            }
+            break;
+        case '2':
+            if (armor == 1) {
+                std::cout << "Sorry you already have this item in your inventory" << endl;
+            }
+            else if (cash >= armorPrice)
+            {
+                cash -= armorPrice;
+                maxhealth = maxhealth + 5;
+                armor = 1;
+                std::cout << "Thank you for your purchase! You currently have " << cash << " gold left. \n Would you like anything else?" << endl;
+                cin >> userAns;
+
+                if (userAns == 'Yes' || userAns == 'yes' || userAns == 'y' || userAns == 'Y')
+                {
+                    break;
+                }
+                else if (userAns == 'No' || userAns == 'no' || userAns == 'n' || userAns == 'N')
+                {
+                    userLoop = false;
+                    break;
+                }
+
+            }
+            else if (cash < armorPrice)
+            {
+                std::cout << "Sorry you dont have enough gold to purchase this item. " << endl;
+            }
+            break;
+        case '3':
+
+            if (jewelry == 1) {
+                std::cout << "Sorry you already have this item in your inventory" << endl;
+            }
+            else if (cash >= jewelryPrice)
+            {
+                cash -= jewelryPrice;
+                jewelry = 1;
+                std::cout << "Thank you for your purchase! You currently have " << cash << " gold left. \n Would you like anything else?" << endl;
+                cin >> userAns;
+
+                if (userAns == 'Yes' || userAns == 'yes' || userAns == 'y' || userAns == 'Y')
+                {
+                    break;
+                }
+                else if (userAns == 'No' || userAns == 'no' || userAns == 'n' || userAns == 'N')
+                {
+                    userLoop = false;
+                    break;
+                }
+
+            }
+            else if (cash < jewelryPrice)
+            {
+                std::cout << "Sorry you dont have enough gold to purchase this item. " << endl;
+            }
+            break;
+
+        case '4':
+            userLoop = false;
+            break;
+
+        }
+
+    } while (userLoop == true);
+
+    std::cout << endl;
+    std::cout << "Clerk: Thank you for stopping by, have a nice day :) " << endl;
+    std::cout << endl;
+}
+
+//Dice mechanics
 int diceRoll(int role) { //cant use class because it is a key word so am using role instead
 
     int rollDice;
@@ -593,6 +1028,7 @@ int diceRoll(int role) { //cant use class because it is a key word so am using r
     return rollDice;
 
 }
+//Blessing system
 int blessRoll(int role, int bless1, int bless2) {
     int blessRoll;
     int fullSelect;
@@ -810,6 +1246,7 @@ int blessRoll(int role, int bless1, int bless2) {
 int main() {
     //time
     srand(time(0));
+    int turns = 0;
     //variables for role selection
     int role = 0;
     int unsurerole;
@@ -851,7 +1288,7 @@ int main() {
     std::cout << "2. Soldier: You start off with 14hp, you move with a 8 sided dice and you deal a extra 2 damage with every attack" << endl;
     std::cout << "3. Noble: You start off with 8hp, and start the game with 10 gold" << endl;
     std::cout << "4. Priest: You start off with 8hp, when you draw a blessing you can draw from the top 3 cards" << endl;
-    std::cout << "5. Merchant: You start off with 10hp, you can haggle down the price of each store item by 5 gold" << endl;
+    std::cout << "5. Merchant: You start off with 10hp, you can haggle down the price of each store item by some gold" << endl;
     std::cout << endl << "PLease type in the number of the role you would like:  ";
     cin >> role;
     std::cout << endl;
@@ -888,6 +1325,20 @@ int main() {
     //the loop for what happens depending on what square you are on 
     while (gameend == 0) {
         string interact;
+        turns = turns + 1;
+        if (health <= 0) {
+            position = 1;
+            money = money - 15;
+            if (money <= 0) {
+                money = 0;
+            }
+            health = maxhealth;
+            turns = turns + 3;
+            std:: cout << "\n\nA servant found you unconscious and brought you back to the pyramid. You lost 15 dollars and were asleep for 3 nights\n\n"
+
+        }
+        std:: cout << "\n\nTurns: " << turns <<"       Position: " << position << "       Gold: " << money << "\n\n";
+
         //this is if the player is in position 1
         if (position == 1) {
             if (crook == 0 || flail == 0 || robe == 0 || hat == 0 || belt == 0 || jewelry == 0) { // if you are just starting
@@ -912,7 +1363,6 @@ int main() {
                 gameend = 1;
             }
         }
-
 
         //     This is if the player is in position 2
         else if (position == 2) {
@@ -948,7 +1398,6 @@ int main() {
             }
         }
 
-
         //     This is if the player is in position 3
         else if (position == 3) {
             if (crook == 0 || flail == 0 || robe == 0 || hat == 0 || belt == 0 || jewelry == 0) { // if you are just starting
@@ -981,7 +1430,6 @@ int main() {
                 }
             }
         }
-
 
         //     This is if the player is in position 4
         else if (position == 4) {
@@ -1018,7 +1466,6 @@ int main() {
             }
         }
 
-
         //     This is if the player is in position 5
         else if (position == 5) {
             money = money + 2;
@@ -1054,16 +1501,15 @@ int main() {
             }
         }
 
-
         //     This is if the player is in position 6
         else if (position == 6) {
             if (shovel == 1) {
                 money = money + 30;
-                std::cout << "You found a buried treasure chest and managed to pry it open with your shovel! \n You found 30 gold coins!";
+                std::cout << "You found a buried treasure chest and managed to pry it open with your shovel! \n You found 30 gold coins!\n";
                 shovel = 0;
             }
             else {
-                std::cout << "There is a buried treasure chest at your feet come back with a shovel to claim its contents!";
+                std::cout << "There is a buried treasure chest at your feet come back with a shovel to claim its contents!\n";
             }
             if (crook == 0 || flail == 0 || robe == 0 || hat == 0 || belt == 0 || jewelry == 0) { // if you are just starting
                 std::cout << "Press any button and enter to roll the dice:";
@@ -1096,7 +1542,6 @@ int main() {
             }
         }
 
-
         //     This is if the player is in position 7
         else if (position == 7) {
             std::cout << "This is a neutral square.";
@@ -1119,7 +1564,6 @@ int main() {
 
             }
         }
-
 
         //     This is if the player is in position 8
         else if (position == 8) {
@@ -1145,8 +1589,6 @@ int main() {
             }
         }
 
-
-
         //     This is if the player is in position 9
         else if (position == 9) {
             bless2, bless1 = blessRoll(role, bless1, bless2);
@@ -1165,22 +1607,22 @@ int main() {
 
         //     This is if the player is in position 10
         else if (position == 10) {
-        money = money + 2;
-        std::cout << "Congrats! You found 2 gold coins hidden in a bush!";
-        std::cout << "Press any button and enter to roll the dice:";
-        cin >> interact;
-        dice = diceRoll(role);
-        position = position + dice;
+            money = money + 2;
+            std::cout << "Congrats! You found 2 gold coins hidden in a bush!";
+            std::cout << "Press any button and enter to roll the dice:";
+            cin >> interact;
+            dice = diceRoll(role);
+            position = position + dice;
         }
 
         //     This is if the player is in position 11
         else if (position == 11) {
-        money = money + 3;
-        std::cout << "Congrats! You found 3 gold coins hidden in your shoe";
-        std::cout << "Press any button and enter to roll the dice:";
-        cin >> interact;
-        dice = diceRoll(role);
-        position = position + dice;
+            money = money + 3;
+            std::cout << "Congrats! You found 3 gold coins hidden in your shoe";
+            std::cout << "Press any button and enter to roll the dice:";
+            cin >> interact;
+            dice = diceRoll(role);
+            position = position + dice;
         }
 
         //     This is if the player is in position 12
@@ -1329,9 +1771,14 @@ int main() {
             }
         }
 
+        //      This is if the player is in position 18
         else if (position == 18) {
-
+        if (role == 5) {
+            oasisShopMerc(money, pickpocket, healthpotion, sword);
+        }
+        else {
             oasisShop(money, pickpocket, healthpotion, sword);
+        }
             std::cout << "Press any button and enter to roll the dice:";
             cin >> interact;
             dice = diceRoll(role);
@@ -1348,8 +1795,7 @@ int main() {
                     position = position + dice + 21;
                 }
             }
-            else
-            {
+            else{
                 position = position + dice;
             }
         }
@@ -1357,12 +1803,12 @@ int main() {
 
 
 
-        
-
-        
 
 
-        
+
+
+
+
 
 
         //     This is if the player is in position 30
@@ -1380,10 +1826,15 @@ int main() {
             }
             else {
                 position = 31;
-                belt = 1;
+                hat = 1;
             }
 
         }
+
+
+
+
+
 
         //     This is if the player is in position 51
         else if (position == 51) {
@@ -1400,11 +1851,153 @@ int main() {
             }
             else {
                 position = 52;
-                belt = 1;
+                robe = 1;
             }
 
         }
 
+        //     This is if the player is in position 52
+        else if (position == 52) {
+        std::cout << "This is a neutral square.";
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        position = position + dice;
+    }
+
+        //     This is if the player is in position 53
+        else if (position == 53) {
+        money = money - 3;
+        std::cout << "The wind picks up and a duststorm whips you, you drop 3 coins.";
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        position = position + dice;
+    }
+
+        //     This is if the player is in position 54
+        else if (position == 54) {
+        money = money + 2;
+        std::cout << "A couple of coins were stuck in your boot! Score!";
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        position = position + dice;
+    }
+
+        //     This is if the player is in position 55
+        else if (position == 55) {
+        if (shovel == 1) {
+            money = money + 30;
+            std::cout << "You found a buried treasure chest and managed to pry it open with your shovel! \n You found 30 gold coins!";
+            shovel = 0;
+        }
+        else {
+            std::cout << "There is a buried treasure chest at your feet come back with a shovel to claim its contents!";
+        }
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        position = position + dice;
+    }
+
+        //     This is if the player is in position 56
+        else if (position == 56) {
+        money = money + 1;
+        std::cout << "You find a coin attached to a letter and a ballon! The letter is illegible, you take the coin.";
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        if (dice == 8) {
+            position = 63;
+        }
+        else {
+            position = position + dice;
+        }
+    }
+
+        //     This is if the player is in position 57
+        else if (position == 57) {
+        std::cout << "This is a neutral square.";
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        if (dice >= 7) {
+            position = 63;
+        }
+        else {
+            position = position + dice;
+        }
+    }
+
+        //     This is if the player is in position 58
+        else if (position == 58) {
+        money = money - 2;
+        std::cout << "You stumble over yourself and trip, you accidentally drop two coins into a rocketship which takes off without you.";
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        if (dice >= 6) {
+            position = 63;
+        }
+        else {
+            position = position + dice;
+        }
+    }
+
+        //     This is if the player is in position 59
+        else if (position == 59) {
+        money = money + 1;
+        std::cout << "You bump into a sickly old man and soothe him in his last few moments on earth. You became the sole benefactor on his will. He owned 1 coin.";
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        if (dice >= 5) {
+            position = 63;
+        }
+        else {
+            position = position + dice;
+        }
+        }
+
+        //     This is if the player is in position 60
+        else if (position == 60) {
+        bless2, bless1 = blessRoll(role, bless1, bless2);
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        if (dice >= 4) {
+            position = 63;
+        }
+        else {
+            position = position + dice;
+        }
+    }
+
+        //     This is if the player is in position 61
+        else if (position == 61) {
+        money = money + 2;
+        std::cout << "A rocketship lands directly on your head, a couple of coins fall out of it!";
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        if (dice >= 3) {
+            position = 63;
+        }
+        else {
+            position = position + dice;
+        }
+    }
+
+        //     This is if the player is in position 62
+        else if (position == 62) {
+        money = money + 3;
+        std::cout << "Someone mistakes you for a C-list celebrity! They pay you 3 coins for an autograph!";
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        position = 63;
+        }
 
         //     This is if the player is in position 63
         else if (position == 63) {
@@ -1426,9 +2019,370 @@ int main() {
 
         }
 
-       
-       
-        
+        //     This is if the player is in position 64
+        else if (position == 64) {
+        std::cout << "This is a neutral square.";
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        if (dice >= 3) {
+            position = position - 53 + dice;
+        }
+        else {
+            position = position + dice;
+        }
     }
-    
+
+        //     This is if the player is in position 65
+        else if (position == 65) {
+        money = money + 3;
+        std::cout << "Someone mistakes you for a beggar! They generously toss three coins your way...";
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        if (dice >= 2) {
+            position = position - 53 + dice;
+        }
+        else {
+            position = position + dice;
+        }
+    }
+
+        //     This is if the player is in position 66
+        else if (position == 66) {
+        std::cout << "This is a neutral square.";
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        position = position - 53 + dice;
+    }
+
+        //     This is if the player is in position 67
+        else if (position == 67) {
+        money = money - 2;
+        std::cout << "You manouever yourself between some greenery in a very cool way! You drop a couple coins but don't pick them up because you're too cool for that!";
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        position = position + dice;
+    }
+
+        //     This is if the player is in position 68
+        else if (position == 68) {
+        health = health - 3;
+        std::cout << "A cat leaps from the shadows and scratches you before running off... Ow... You lose three health.";
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        position = position + dice;
+    }
+
+        //     This is if the player is in position 69
+        else if (position == 69) {
+        money = money + 5;
+        std::cout << "All of your friends and family die from unknown causes! You inherit 5 coins! Awesome!";
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        if (dice >= 8) {
+            std::cout << "You are at a bridge, if you would like to pass normally enter 0, if you would like to go to the bottom bridge enter 1: ";
+            cin >> bridgeDecision;
+            if (bridgeDecision == 0) {
+                position = position + dice;
+            }
+            else if (bridgeDecision == 1) {
+                position = position + dice - 35;
+            }
+        }
+    }
+
+        //     This is if the player is in position 70
+        else if (position == 70) {
+        std::cout << "This is a neutral square. (Quicksand placeholder)";
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        if (dice >= 7) {
+            std::cout << "You are at a bridge, if you would like to pass normally enter 0, if you would like to go to the bottom bridge enter 1: ";
+            cin >> bridgeDecision;
+            if (bridgeDecision == 0) {
+                position = position + dice;
+            }
+            else if (bridgeDecision == 1) {
+                position = position + dice - 35;
+            }
+        }
+    }
+
+        //     This is if the player is in position 71
+        else if (position == 71) {
+        std::cout << "This is a neutral square.";
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        if (dice >= 6) {
+            std::cout << "You are at a bridge, if you would like to pass normally enter 0, if you would like to go to the bottom bridge enter 1: ";
+            cin >> bridgeDecision;
+            if (bridgeDecision == 0) {
+                position = position + dice;
+            }
+            else if (bridgeDecision == 1) {
+                position = position + dice - 35;
+            }
+        }
+    }
+
+        //     This is if the player is in position 72
+        else if (position == 72) {
+        bless2, bless1 = blessRoll(role, bless1, bless2);
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        if (dice >= 5) {
+            std::cout << "You are at a bridge, if you would like to pass normally enter 0, if you would like to go to the bottom bridge enter 1: ";
+            cin >> bridgeDecision;
+            if (bridgeDecision == 0) {
+                position = position + dice;
+            }
+            else if (bridgeDecision == 1) {
+                position = position + dice - 35;
+            }
+        }
+    }
+
+        //     This is if the player is in position 73
+        else if (position == 73) {
+        std::cout << "A cat leaps from the shadows and scratches you before running off... Ow... You lose three health.";
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        if (dice >= 4) {
+            std::cout << "You are at a bridge, if you would like to pass normally enter 0, if you would like to go to the bottom bridge enter 1: ";
+            cin >> bridgeDecision;
+            if (bridgeDecision == 0) {
+                position = position + dice;
+            }
+            else if (bridgeDecision == 1) {
+                position = position + dice - 35;
+            }
+        }
+    }
+
+        //     This is if the player is in position 74
+        else if (position == 74) {
+        money = money + 5;
+        std::cout << "You trip over a corpse. Hm... After a brief moral debate in your mind, you decide to loot the body. You get 5 coins.";
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        if (dice >= 3) {
+            std::cout << "You are at a bridge, if you would like to pass normally enter 0, if you would like to go to the bottom bridge enter 1: ";
+            cin >> bridgeDecision;
+            if (bridgeDecision == 0) {
+                position = position + dice;
+            }
+            else if (bridgeDecision == 1) {
+                position = position + dice - 35;
+            }
+        }
+    }
+
+        //     This is if the player is in position 75
+        else if (position == 75) {
+        money = money + 3;
+        std::cout << "You find a sofa covered in sand! You check under the cushions and find three coins!";
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        if (dice >= 2) {
+            std::cout << "You are at a bridge, if you would like to pass normally enter 0, if you would like to go to the bottom bridge enter 1: ";
+            cin >> bridgeDecision;
+            if (bridgeDecision == 0) {
+                position = position + dice;
+            }
+            else if (bridgeDecision == 1) {
+                position = position + dice - 35;
+            }
+        }
+    }
+
+        //     This is if the player is in position 76
+        else if (position == 76) {
+        bless2, bless1 = blessRoll(role, bless1, bless2);
+        std::cout << "Press any button and enter to roll the dice:";
+        cin >> interact;
+        dice = diceRoll(role);
+        if (dice >= 1) {
+            std::cout << "You are at a bridge, if you would like to pass normally enter 0, if you would like to go to the bottom bridge enter 1: ";
+            cin >> bridgeDecision;
+            if (bridgeDecision == 0) {
+                position = position + dice;
+            }
+            else if (bridgeDecision == 1) {
+                position = position + dice - 35;
+            }
+        }
+    }
+
+        //     This is if the player is in position 104
+        else if (position == 104) {
+        if (role == 5) {
+            sandyShopMerc(money, shovel, armor, jewelry, maxhealth);
+        }
+        else {
+            sandyShop(money, shovel, armor, jewelry, maxhealth);
+        }
+        if (crook == 0 || flail == 0 || robe == 0 || hat == 0 || belt == 0 || jewelry == 0) { // if you are just starting
+            std::cout << "Press any button and enter to roll the dice:";
+
+            cin >> interact;
+            dice = diceRoll(role);
+            if (dice <= 3) {
+                position = position + dice;
+            }
+            else if (dice <= 7) {
+                position = position - 102 + dice;
+            }
+            else if (dice == 8) {
+                std::cout << "You are at a fork in the path if you would like to head left enter 0 to head right enter 1: ";
+                cin >> leftRight;
+                if (leftRight == 0) {
+                    position = 10;
+                }
+                else {
+                    position = 67;
+                }
+            }
+        }
+        if (crook == 1 && flail == 1 && robe == 1 && hat == 1 && belt == 1 && jewelry == 1) { //for if you are ending the game
+            std::cout << "Press any button and enter to roll the dice:";
+            cin >> interact;
+            dice = diceRoll(role);
+            if (dice <= 3) {
+                position = position - dice;
+            }
+            else if(dice >=4){
+                position = 10 - dice;
+            }
+        }
+        }
+
+        //     This is if the player is in position 105
+        else if (position == 105) {
+        bless2, bless1 = blessRoll(role, bless1, bless2);
+        if (crook == 0 || flail == 0 || robe == 0 || hat == 0 || belt == 0 || jewelry == 0) { // if you are just starting
+            std::cout << "Press any button and enter to roll the dice:";
+
+            cin >> interact;
+            dice = diceRoll(role);
+            if (dice <= 2) {
+                position = position + dice;
+            }
+            else if (dice <= 6) {
+                position = position - 102 + dice;
+            }
+            else if (dice <= 8) {
+                std::cout << "You are at a fork in the path if you would like to head left enter 0 to head right enter 1: ";
+                cin >> leftRight;
+                if (leftRight == 0) {
+                    position = position - 102 + dice;
+                }
+                else {
+                    position = position - 45 + dice;
+                }
+            }
+        }
+        if (crook == 1 && flail == 1 && robe == 1 && hat == 1 && belt == 1 && jewelry == 1) { //for if you are ending the game
+            std::cout << "Press any button and enter to roll the dice:";
+            cin >> interact;
+            dice = diceRoll(role);
+            if (dice <= 2) {
+                position = position + dice;
+            }
+            else if (dice >= 4) {
+                position = 9 - dice;
+            }
+        }
+        }
+
+        //     This is if the player is in position 106
+        else if (position == 106) {
+        std::cout << "Oh, no! You got your leg stuck in quiksand and it took you one turn to get out!";
+            turns = turns = 1;
+        if (crook == 0 || flail == 0 || robe == 0 || hat == 0 || belt == 0 || jewelry == 0) { // if you are just starting
+            std::cout << "Press any button and enter to roll the dice:";
+
+            cin >> interact;
+            dice = diceRoll(role);
+            if (dice <= 1) {
+                position = position + dice;
+            }
+            else if (dice <= 5) {
+                position = position - 102 + dice;
+            }
+            else if (dice <= 8) {
+                std::cout << "You are at a fork in the path if you would like to head left enter 0 to head right enter 1: ";
+                cin >> leftRight;
+                if (leftRight == 0) {
+                    position = position - 102 + dice;
+                }
+                else {
+                    position = position - 45 + dice;
+                }
+            }
+        }
+        if (crook == 1 && flail == 1 && robe == 1 && hat == 1 && belt == 1 && jewelry == 1) { //for if you are ending the game
+            std::cout << "Press any button and enter to roll the dice:";
+            cin >> interact;
+            dice = diceRoll(role);
+            if (dice <= 1) {
+                position = position + dice;
+            }
+            else if (dice >= 7) {
+                position = 8 - dice;
+            }
+            else {
+                std::cout << "You must land directly on top of the throne. You are one space away. /n Please wait to roll again";
+            }
+            }
+        }
+
+        //     This is if the player is in position 107
+        else if (position == 107) {
+        health = health - 2;
+        std::cout << "You reach down to scratch your arm and you realize it was a snake the whole time! It bites you and you take 2 damage";
+        if (crook == 0 || flail == 0 || robe == 0 || hat == 0 || belt == 0 || jewelry == 0) { // if you are just starting
+            std::cout << "Press any button and enter to roll the dice:";
+
+            cin >> interact;
+            dice = diceRoll(role);
+            if (dice <= 5) {
+                position = position - 102 + dice;
+            }
+            else if (dice <= 8) {
+                std::cout << "You are at a fork in the path if you would like to head left enter 0 to head right enter 1: ";
+                cin >> leftRight;
+                if (leftRight == 0) {
+                    position = position - 102 + dice;
+                }
+                else {
+                    position = position - 45 + dice;
+                }
+            }
+        }
+        if (crook == 1 && flail == 1 && robe == 1 && hat == 1 && belt == 1 && jewelry == 1) { //for if you are ending the game
+            std::cout << "Press any button and enter to roll the dice:";
+            cin >> interact;
+            dice = diceRoll(role);
+            if (dice >= 6) {
+                position = 7 - dice;
+            }
+            else {
+                std::cout << "You must land directly on top of the throne. You are one space away. /n Please wait to roll again";
+            }
+            }
+        }
+
+    }
+
 }
